@@ -1,6 +1,4 @@
-﻿using CouponAPI.Application.Features.Coupons.Create;
-
-namespace CouponAPI.Application.Features.Coupons.Update;
+﻿namespace CouponAPI.Application.Features.Coupons.Update;
 
 public static class UpdateCouponCommandEndpoint
 {

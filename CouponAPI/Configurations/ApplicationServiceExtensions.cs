@@ -12,14 +12,16 @@ public static class ApplicationServiceExtensions
         // Register FluentValidation Validators
         services.AddValidatorsFromAssembly(currentAssembly);
 
-
-
-        // Register Cross-Cutting Conserns Behaviors
+        // MediatR Pipeline Behaviors
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+
+        // HTTP Context Accessor
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
 
         return services;
     }
 }
+
